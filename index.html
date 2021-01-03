@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style/style.css">
+	<title>Minecraft clone</title>
+</head>
+<body>
+	<canvas id="game" tabindex="1"></canvas>
+	<div class="game-info">
+		<div>
+			<span><b>WASD: </b>Передвижение</span>
+			<span><b>ЛКМ: </b> Поставить блок</span>
+			<span><b>ПКМ: </b> Удалить блок</span>
+		</div>
+		<hr>
+		<div id="debug">
+			<span><b></b></span>
+		</div>
+	</div>
+	<div id="cursor"></div>
+
+	<script src="scripts/perlin.js"></script>
+	<script src="scripts/core.js" type="module"></script>
+</body>
+</html>
