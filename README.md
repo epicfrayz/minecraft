@@ -7,7 +7,7 @@
 - Генерация карты(шум Перлина)
 
 # Онлайн демо
-- Разместил вот [тут](https://epiclegend.ru/minecraft)
+- Разместил вот [тут](https://epiclegend.ru/demo/minecraft)
 - Процесс и объяснение [тут](https://youtu.be/_isuLrCbx6c)
 
 > ![Screen 1](screen/welcome.png)
