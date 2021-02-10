@@ -142,6 +142,10 @@ var PointerLockControls = function ( camera, domElement ) {
 
 	};
 
+	this.moveUp = function( distance ) {
+		camera.position.addScaledVector( new Vector3(0, 1, 0), distance );
+	}
+
 	this.lock = function () {
 
 		this.domElement.requestPointerLock();

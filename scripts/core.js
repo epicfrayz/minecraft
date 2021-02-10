@@ -21,8 +21,8 @@ mapWorld.generation(scene);
 
 let controls = new Controls( new PointerLockControls(camera, document.body),  scene, mapWorld );
 
-renderer.domElement.addEventListener( "keydown", (e)=>{ controls.inputKeydown(e); } );
-renderer.domElement.addEventListener( "keyup", (e)=>{ controls.inputKeyup(e); } );
+window.addEventListener( "keydown", (e)=>{ controls.inputKeydown(e); } );
+window.addEventListener( "keyup", (e)=>{ controls.inputKeyup(e); } );
 document.body.addEventListener( "click", (e) => { controls.onClick(e); }, false );
 
 // Инвентарь

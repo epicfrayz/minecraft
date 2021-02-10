@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="style/style.css")
+    title Minecraft clone
+  body
+    canvas(id="game", tabindex="1")
+    div(class="game-info")
+      div
+        span <b>WASD: </b>Передвижение
+        span <b>ЛКМ: </b>Поставить блок
+        span <b>ПКМ: </b>Удалить блок
+        span <b> Space: </b>Подняться вверх
+        span <b> Shift: </b>Спуститься вниз
+      hr
+      div(id="debug")
+        span
+          b
+    div(id="cursor")
+
+    script(src="./scripts/perlin.js")
+    script(src="./scripts/core.js", type="module")
