@@ -14,18 +14,17 @@ export class Map {
 		const settings = new Settings();
 
 		const loader = new THREE.TextureLoader();
-		const materialArray = [
-			new THREE.MeshBasicMaterial( { map: loader.load("../texture/dirt-side.jpg") } ),
-			new THREE.MeshBasicMaterial( { map: loader.load('../texture/dirt-side.jpg') } ),
-			new THREE.MeshBasicMaterial( { map: loader.load('../texture/dirt-top.jpg') } ),
-			new THREE.MeshBasicMaterial( { map: loader.load('../texture/dirt-bottom.jpg') } ),
-			new THREE.MeshBasicMaterial( { map: loader.load('../texture/dirt-side.jpg') } ),
-			new THREE.MeshBasicMaterial( { map: loader.load('../texture/dirt-side.jpg') } )
-		];
+		const materialArray = ["dirt-side.jpg", "dirt-side.jpg", "dirt-top.jpg", "dirt-bottom.jpg", "dirt-side.jpg", "dirt-side.jpg"].map(v => {
+			let texture = loader.load(`../texture/${v}`);
+			texture.magFilter = THREE.NearestFilter;
+			texture.minFilter = THREE.NearestFilter;
+			return new THREE.MeshBasicMaterial({ map: texture });
+		})
 
 		this.materialArray = materialArray;
 
 		const geometry = new THREE.BoxGeometry( settings.blockSquare, settings.blockSquare, settings.blockSquare);
+		console.log(geometry);
 
 		noise.seed(Math.random());
 		
@@ -33,6 +32,7 @@ export class Map {
 			for(let z = 0; z < settings.chunkSize; z++) {
 
 				let cube = new THREE.Mesh(geometry, materialArray);
+				
 
 				this.xoff = this.inc * x;
 				this.zoff = this.inc * z;

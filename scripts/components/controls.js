@@ -4,7 +4,7 @@ import { Settings } from "./settings.js";
 export class Controls {
 	constructor(controls, scene, mapWorld){
 		this.controls = controls;
-		this.keys = [];
+		this.keys = new Set();
 		this.movingSpeed = 1.5;
 		this.scene = scene;
 		this.mapWorld = mapWorld;
@@ -73,31 +73,36 @@ export class Controls {
 	}
 	// нажали на клавишу
 	inputKeydown(e) {
-		this.keys.push(e.key);
+		this.keys.add(e.key.toLowerCase());
 	}
+
 	// отпустили клавишу
 	inputKeyup(e) {
-		let newArr = [];
-		for(let i = 0; i < this.keys.length; i++){
-			if(this.keys[i] != e.key){
-				newArr.push(this.keys[i]);
-			}
-		}
-		this.keys = newArr;
+		this.keys.delete(e.key.toLowerCase());
 	}
+
 	update() {
 		// Движение камеры
-		if ( this.keys.includes("w") || this.keys.includes("ц") ) {
+
+		// Вперёд и назад
+		if ( this.keys.has("w") || this.keys.has("ц") ) {
 			this.controls.moveForward(this.movingSpeed);
-		}
-		if ( this.keys.includes("a") || this.keys.includes("ф") ) {
-			this.controls.moveRight(-1 * this.movingSpeed);
-		}
-		if ( this.keys.includes("s") || this.keys.includes("ы") ) {
+		} else if ( this.keys.has("s") || this.keys.has("ы") ) {
 			this.controls.moveForward(-1 * this.movingSpeed);
 		}
-		if ( this.keys.includes("d") || this.keys.includes("в") ) {
+
+		// Вправо и влево
+		if ( this.keys.has("d") || this.keys.has("в") ) {
 			this.controls.moveRight(this.movingSpeed);
+		} else if ( this.keys.has("a") || this.keys.has("ф") ) {
+			this.controls.moveRight(-1 * this.movingSpeed);
+		}
+
+		// Вниз и вверх
+		if ( this.keys.has("shift")) {
+			this.controls.moveUp(-this.movingSpeed / 2);
+		} else if (this.keys.has(" ")) {
+			this.controls.moveUp(this.movingSpeed / 2);
 		}
 	}
 }
